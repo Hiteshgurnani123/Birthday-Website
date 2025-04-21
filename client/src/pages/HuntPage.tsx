@@ -121,8 +121,8 @@ export function HuntPage() {
             <p className="font-quicksand text-white text-xl mb-6">
               Ready for your next magical adventure?
             </p>
-            <NextPageButton to="/promises" animate>
-              Continue to Your Special Gift ✨
+            <NextPageButton to="/final" animate>
+              Continue to Your Final Surprise ✨
             </NextPageButton>
           </div>
         )}
