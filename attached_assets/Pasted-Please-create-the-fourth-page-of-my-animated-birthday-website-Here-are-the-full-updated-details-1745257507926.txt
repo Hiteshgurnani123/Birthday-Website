@@ -1,0 +1,46 @@
+Please create the **fourth page** of my animated birthday website. Here are the full updated details and corrections:
+
+🌄 1. Background Image:
+- Use the most recently uploaded image as the **background** for this page.
+- It should cover the entire screen (center, no repeat, cover).
+- Slight opacity can be added if needed for better readability of game elements.
+- All UI elements like borders or outlines must match the background’s dreamy, Studio Ghibli-inspired theme.
+
+🎵 2. Background Music:
+- Use the **same music file** as previous pages (uploaded earlier).
+- It should **auto-play and loop continuously** in the background without interruption.
+
+🖱️ 3. Cursor Movement Effect:
+- Retain the **cursor sparkle/magical trail effect** from the earlier pages for consistency.
+
+🎮 4. Main Feature: 🎉 **Digital Birthday Hunt Game**
+- Create a fun hidden-object game where Tamnna has to find a few birthday-themed items on the page (e.g., cake slice, gift box, balloon, cupcake, star).
+- The background should feel like part of the game — subtly hiding objects in plain sight.
+- When a user clicks an object:
+   - It should animate (e.g., bounce, glow).
+   - Maybe give a small sound or visual reward (optional).
+- Display a message like “You found 1/5 items!” and update as progress increases.
+- When all items are found, show a sweet congratulatory message like:
+   - “Yay! You’ve found all the birthday surprises! 🎉”
+   - Add a "Next" button after that for page navigation.
+
+🎯 Hidden items should be:
+- Styled to match the page aesthetic — soft, glowing outlines or shadows.
+- Not too obvious, but also not frustratingly hard.
+- Ideally 4-6 small themed objects.
+
+🔁 5. Previous Fixes:
+- On the **first page**, center the navigation button horizontally and move it a little upward (so it's not touching the very bottom).
+- On the **third page**, remove the extra button labeled **“choose a gift for your birthday”** — it’s not needed on that page.
+
+➡️ 6. Navigation:
+- After the game is completed, show a button labeled **“Next”** to move to the fifth page.
+- The button should be styled in a magical way, with gentle animation or glow on hover.
+
+🔤 7. Style:
+- Maintain the same dreamy style — clean fonts, animated elements, Studio Ghibli-inspired vibe.
+- Font family should remain consistent (like "Quicksand" or similar).
+- Borders or outlines should harmonize with the background image.
+
+🎯 Goal:
+This page should feel fun and magical — like a sweet little adventure surprise for Tamnna, giving her a moment of joy while finding birthday-themed hidden treasures.
