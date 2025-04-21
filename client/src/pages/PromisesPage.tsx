@@ -20,11 +20,7 @@ const promises: Promise[] = [
   { id: 'laughs', title: 'A Day Full of Laughs', icon: '😄', selected: false },
   { id: 'wish', title: 'One Wish Granted', icon: '✨', selected: false },
   { id: 'hug', title: 'A Big Hug in Person', icon: '🤗', selected: false },
-  { id: 'yes', title: '24 Hours of Yes', icon: '👑', selected: false },
-  { id: 'shopping', title: 'Shopping Spree', icon: '🛍️', selected: false },
-  { id: 'adventure', title: 'Mystery Adventure', icon: '🎯', selected: false },
-  { id: 'dessert', title: 'Favorite Dessert', icon: '🍰', selected: false },
-  { id: 'photo', title: 'Photo Session', icon: '📸', selected: false }
+  { id: 'yes', title: '24 Hours of Yes', icon: '👑', selected: false }
 ];
 
 export function PromisesPage() {
@@ -65,7 +61,7 @@ export function PromisesPage() {
       <div className="fixed inset-0 z-0">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
-          style={{ backgroundImage: "url('/assets/bg-promises.jpg.jpeg')" }}
+          style={{ backgroundImage: "url('/assets/bg-promises.jpg')" }}
         />
         <div className="absolute inset-0 bg-black bg-opacity-30" />
       </div>
