@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { SparkleEffect } from '@/components/SparkleEffect';
 import { MusicPlayer } from '@/components/MusicPlayer';
 import { MessageBox } from '@/components/MessageBox';
@@ -34,6 +34,20 @@ const birthdayMessages = [
 
 export function MessagesPage() {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  const [allMessagesShown, setAllMessagesShown] = useState(false);
+  const [messageIntervalId, setMessageIntervalId] = useState<number | null>(null);
+  
+  // Function to advance to the next message
+  const advanceToNextMessage = useCallback(() => {
+    setCurrentMessageIndex(prevIndex => {
+      // If we're at the last message
+      if (prevIndex === birthdayMessages.length - 1) {
+        setAllMessagesShown(true); // Mark that all messages have been shown
+        return prevIndex; // Stay on the last message
+      }
+      return prevIndex + 1; // Otherwise, go to the next message
+    });
+  }, []);
   
   useEffect(() => {
     // Add Google Fonts for Dancing Script
@@ -52,18 +66,28 @@ export function MessagesPage() {
     document.head.appendChild(styleSheet);
     
     // Setup message rotation
-    const messageInterval = setInterval(() => {
-      setCurrentMessageIndex(prevIndex => 
-        prevIndex === birthdayMessages.length - 1 ? 0 : prevIndex + 1
-      );
+    const intervalId = window.setInterval(() => {
+      advanceToNextMessage();
     }, 8000); // Change message every 8 seconds
     
+    setMessageIntervalId(intervalId);
+    
     return () => {
-      clearInterval(messageInterval);
+      if (messageIntervalId) {
+        clearInterval(messageIntervalId);
+      }
       document.head.removeChild(link);
       document.head.removeChild(styleSheet);
     };
-  }, []);
+  }, [advanceToNextMessage]);
+  
+  // Clear the interval once all messages have been shown
+  useEffect(() => {
+    if (allMessagesShown && messageIntervalId) {
+      clearInterval(messageIntervalId);
+      setMessageIntervalId(null);
+    }
+  }, [allMessagesShown, messageIntervalId]);
   
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
@@ -95,8 +119,12 @@ export function MessagesPage() {
         </div>
       </main>
       
-      {/* Next page button */}
-      <NextPageButton to="/gallery" />
+      {/* Next page button - animate it once all messages have been shown */}
+      <NextPageButton 
+        to="/gallery" 
+        animate={allMessagesShown} 
+        delay={allMessagesShown ? 1 : 3} 
+      />
     </div>
   );
 }
