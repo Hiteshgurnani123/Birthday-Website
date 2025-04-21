@@ -74,13 +74,13 @@ export function BirthdayPage() {
       <div className="fixed inset-0 z-0">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed" 
-          style={{ backgroundImage: "url('/attached_assets/bg-welcome.jpg.jpeg')" }}
+          style={{ backgroundImage: "url('/assets/bg-welcome.jpg')" }}
         ></div>
         <div className="absolute inset-0 bg-overlay"></div>
       </div>
       
       {/* Music player */}
-      <MusicPlayer audioSrc="/attached_assets/music.mp3" />
+      <MusicPlayer audioSrc="/assets/music.mp3" />
       
       {/* Sparkles */}
       <SparkleEffect />
