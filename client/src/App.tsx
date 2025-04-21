@@ -14,6 +14,7 @@ function App() {
         <Route path="/" component={BirthdayPage} />
         <Route path="/messages" component={MessagesPage} />
         <Route path="/gallery" component={GalleryPage} />
+        <Route path="/hunt" component={HuntPage} />
         <Route component={NotFound} />
       </Switch>
     </TooltipProvider>
