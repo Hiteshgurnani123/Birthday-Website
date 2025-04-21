@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { SparkleEffect } from '@/components/SparkleEffect';
 import { MusicPlayer } from '@/components/MusicPlayer';
 import { ScrollIndicator } from '@/components/ScrollIndicator';
+import { NextPageButton } from '@/components/NextPageButton';
 
 export function BirthdayPage() {
   const mainHeadingRef = useRef<HTMLDivElement>(null);
@@ -102,6 +103,9 @@ export function BirthdayPage() {
       
       {/* Scroll indicator */}
       <ScrollIndicator />
+      
+      {/* Next page button */}
+      <NextPageButton to="/messages" />
     </div>
   );
 }
