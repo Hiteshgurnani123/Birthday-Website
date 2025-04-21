@@ -2,6 +2,7 @@ import { Route, Switch } from "wouter";
 import { BirthdayPage } from "@/pages/BirthdayPage";
 import { MessagesPage } from "@/pages/MessagesPage";
 import { GalleryPage } from "@/pages/GalleryPage";
+import { HuntPage } from "@/pages/HuntPage";
 import NotFound from "@/pages/not-found";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
