@@ -1,0 +1,53 @@
+Please create the **fifth page** of my animated birthday website. Below are all the detailed requirements and design expectations for this page:
+
+🌄 1. Background Image:
+- Use the **latest uploaded image** as the full-screen background.
+- It should be styled with `background-size: cover`, `background-position: center`, and `no-repeat`.
+- Slight dark or dreamy overlay can be added if needed for contrast with content.
+- All borders, buttons, and UI elements must complement the background color scheme.
+
+🎵 2. Background Music:
+- Use the **same music file** as previous pages.
+- Ensure it plays **automatically** and is **looped** continuously in the background.
+
+🖱️ 3. Cursor Magic:
+- Keep the **cursor trail or sparkle effect** enabled as seen in previous pages for visual continuity.
+
+🎁 4. Main Feature: **“Choose Your Birthday Gift or Promise”**
+- Display a dreamy section with **6-8 options** presented as glowing cards or buttons.
+- Options should be a mix of funny, sweet, or heartfelt gifts/promises like:
+   - "A Surprise Picnic"
+   - "Endless Support"
+   - "Handwritten Letter"
+   - "Movie Night with Pizza"
+   - "A Day Full of Laughs"
+   - "One Wish Granted"
+   - "A Big Hug in Person"
+   - "24 Hours of Yes"
+- These can be styled in rounded glowing cards or buttons with soft animations on hover (e.g., subtle bounce, glow, or tilt).
+- Add cute icons or illustrations on each card if possible.
+
+✨ 5. Interaction:
+- When a user clicks on any one gift or promise:
+   - It should get **highlighted** (e.g., glowing border or scale up).
+   - A small animation or sound can confirm selection.
+   - Display a text like:
+     - “A magical promise has been made just for you, Tamnna! 💖”
+- You can allow only **one selection**, or make it possible to select multiple — whichever is easier to implement.
+- After selection, show a **“Continue”** button to navigate to the next page.
+
+🔘 6. Button Styling:
+- The “Continue” button should match the dreamy theme — rounded, glowing border, soft animation on hover.
+- Text: **“Let’s see what’s next!”**
+
+🎨 7. Styling Details:
+- Use soft, pastel or matching color tones based on the background.
+- Card borders should **match or blend with the background aesthetic** — not too sharp or modern.
+- Use the same font style as earlier pages (like "Quicksand" or similar).
+- Keep everything lightweight and cute — no harsh shadows or sharp borders.
+
+➡️ 8. Navigation:
+- After selecting a gift or promise, the **“Let’s see what’s next!”** button should appear and navigate to the sixth page (to be created next).
+
+🎯 Goal:
+This page should feel **personal and emotional**, as if Tamnna is receiving a set of heartfelt promises and birthday gifts picked just for her. It should be warm, dreamy, magical, and deeply thoughtful — not too flashy.
