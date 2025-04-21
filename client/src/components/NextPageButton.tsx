@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, ReactNode } from 'react';
 import { gsap } from 'gsap';
 import { Link } from 'wouter';
 
@@ -6,9 +6,15 @@ interface NextPageButtonProps {
   to: string;
   animate?: boolean;
   delay?: number;
+  children?: ReactNode;
 }
 
-export function NextPageButton({ to, animate = false, delay = 3 }: NextPageButtonProps) {
+export function NextPageButton({ 
+  to, 
+  animate = false, 
+  delay = 3,
+  children = "Continue the Journey ✨" 
+}: NextPageButtonProps) {
   const buttonRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
@@ -56,10 +62,7 @@ export function NextPageButton({ to, animate = false, delay = 3 }: NextPageButto
   }, [animate, delay]);
   
   return (
-    <div 
-      ref={buttonRef} 
-      className="fixed bottom-12 left-1/2 transform -translate-x-1/2 z-30"
-    >
+    <div ref={buttonRef}>
       <Link to={to}>
         <button
           className="px-6 py-3 rounded-full font-dancing-script text-xl md:text-2xl
@@ -73,7 +76,7 @@ export function NextPageButton({ to, animate = false, delay = 3 }: NextPageButto
             textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
           }}
         >
-          Continue the Journey ✨
+          {children}
         </button>
       </Link>
     </div>

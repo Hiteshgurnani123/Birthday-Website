@@ -6,23 +6,41 @@ export function ScrollIndicator() {
   
   useEffect(() => {
     if (indicatorRef.current) {
-      gsap.to(indicatorRef.current, {
-        opacity: 0.8,
-        duration: 1,
-        delay: 2.5, // Appears after the main content fades in
-        ease: "power2.out"
-      });
+      // Create a never-ending bounce animation
+      gsap.fromTo(
+        indicatorRef.current,
+        { y: 0, opacity: 0.4 },
+        { 
+          y: 10, 
+          opacity: 1,
+          duration: 1.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "power1.inOut"
+        }
+      );
     }
   }, []);
   
   return (
     <div 
-      ref={indicatorRef} 
-      className="fixed bottom-8 left-1/2 transform -translate-x-1/2 text-white opacity-0 z-20"
+      ref={indicatorRef}
+      className="fixed bottom-28 left-1/2 transform -translate-x-1/2 z-30 text-white text-center"
     >
       <div className="flex flex-col items-center">
-        <p className="font-quicksand mb-2 text-sm">Scroll Down</p>
-        <i className="fas fa-chevron-down animate-bounce"></i>
+        <p className="font-quicksand text-sm mb-2">Scroll Down</p>
+        <svg 
+          width="24" 
+          height="24" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+          className="animate-pulse"
+        >
+          <path 
+            d="M12 17L4 9h16l-8 8z" 
+            fill="white" 
+          />
+        </svg>
       </div>
     </div>
   );

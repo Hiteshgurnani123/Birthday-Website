@@ -1,0 +1,35 @@
+I want you to create the third page of my animated birthday website. Please follow these instructions carefully:
+
+🌌 1. **Background Image:**
+Use the most recently uploaded image as the full-screen background for this third page. It should:
+- Cover the entire page (no repeat, center, cover).
+- Feel dreamy and soft, just like Studio Ghibli-style aesthetics.
+- Adjust opacity slightly if needed to ensure UI elements like the game are clearly visible.
+
+🎮 2. **Feature: Memory Match Game**
+This page should include a fun memory card matching game with the following properties:
+- Display 12 cards (6 pairs) arranged in a responsive grid layout.
+- Each card should flip on click and reveal a cute icon or pattern that matches the dreamy background style.
+- Use a soft flip animation with a slight bounce or glow when a match is found.
+- Include a light score tracker and a reset button.
+- Once all matches are found, display a cute success message like “You’ve unlocked the magic memory!”
+
+🎵 3. **Background Music:**
+Use the newly uploaded music file as background music for this page. It should:
+- Autoplay when the page loads.
+- Be set on **loop**.
+- Be subtle and light to maintain focus on the game without being distracting.
+
+🔁 4. **Update Second Page Button:**
+Go back to the second page and:
+- Update the button that navigates to this third page.
+- The new label should be: **“Now it’s time to play a game”**
+- Keep the button styling smooth with a hover effect, and make sure it fits the background and dreamy aesthetic of that page.
+
+💡 5. **Theme Consistency:**
+Make sure the entire third page matches the look and feel of the rest of the site:
+- Use rounded corners, soft shadows, and pastel tones.
+- Ensure all fonts are clean and legible, preferably something whimsical like Google Fonts' "Quicksand" or "Poppins".
+- Cursor should remain custom if added on previous pages.
+
+This page should look visually magical, feel interactive and playful, and match the fantasy theme of the uploaded background image.

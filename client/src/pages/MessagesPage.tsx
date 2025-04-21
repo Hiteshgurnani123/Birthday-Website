@@ -120,11 +120,15 @@ export function MessagesPage() {
       </main>
       
       {/* Next page button - animate it once all messages have been shown */}
-      <NextPageButton 
-        to="/gallery" 
-        animate={allMessagesShown} 
-        delay={allMessagesShown ? 1 : 3} 
-      />
+      <div className="fixed bottom-12 left-1/2 transform -translate-x-1/2 z-30">
+        <NextPageButton 
+          to="/gallery" 
+          animate={allMessagesShown} 
+          delay={allMessagesShown ? 1 : 3}
+        >
+          Now it's time to play a game
+        </NextPageButton>
+      </div>
     </div>
   );
 }
