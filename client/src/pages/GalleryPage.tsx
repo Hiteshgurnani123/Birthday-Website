@@ -208,10 +208,10 @@ export function GalleryPage() {
           <div className="fixed inset-0 flex items-center justify-center z-40 bg-black bg-opacity-50 backdrop-blur-sm">
             <div className="success-message bg-white bg-opacity-20 backdrop-blur-lg p-8 rounded-xl border-2 border-[#ffde59] shadow-xl max-w-md text-center">
               <h2 className="font-dancing-script text-white text-4xl mb-4">
-                You've Unlocked the Magic Memory!
+                Congratulations Birthday Girl!
               </h2>
               <p className="font-quicksand text-white text-xl mb-6">
-                Congratulations! You matched all the magical pairs in {turns} turns.
+                You Won The Game! 🎉
               </p>
               
               {/* Celebratory sparkles */}
@@ -229,22 +229,15 @@ export function GalleryPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <button 
                   className="px-6 py-3 rounded-full bg-[#8a5cf5] bg-opacity-70 hover:bg-opacity-90 text-white font-quicksand transition-all duration-300"
-                  onClick={resetGame}
+                  onClick={() => window.location.href = '/hunt'}
                 >
-                  Play Again
+                  Tamnna, Now It's Time For Another Game
                 </button>
               </div>
             </div>
           </div>
         )}
       </main>
-      
-      {/* Back to welcome page button */}
-      <div className="fixed bottom-12 left-1/2 transform -translate-x-1/2 z-30">
-        <NextPageButton to="/">
-          Return to the Beginning
-        </NextPageButton>
-      </div>
     </div>
   );
 }
