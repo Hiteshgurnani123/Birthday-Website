@@ -14,25 +14,23 @@ export function MessageBox({ message, isActive }: MessageBoxProps) {
   
   useEffect(() => {
     if (boxRef.current) {
-      const timeline = gsap.timeline();
-      
       if (isActive) {
-        // Reset state
-        gsap.set(boxRef.current, { opacity: 0, y: 20 });
-        
-        // Animate in
-        timeline.to(boxRef.current, {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power2.out"
-        });
+        // Animate in when active
+        gsap.fromTo(
+          boxRef.current,
+          { opacity: 0, y: 20 },
+          { 
+            opacity: 1, 
+            y: 0, 
+            duration: 1,
+            ease: "power2.out"
+          }
+        );
       } else {
-        // Animate out if not active
-        timeline.to(boxRef.current, {
-          opacity: 0,
-          y: -20,
-          duration: 0.8,
+        // Animate out when not active
+        gsap.to(boxRef.current, { 
+          opacity: 0, 
+          duration: 0.5,
           ease: "power2.in"
         });
       }
@@ -42,21 +40,23 @@ export function MessageBox({ message, isActive }: MessageBoxProps) {
   return (
     <div 
       ref={boxRef}
-      className={`max-w-md mx-auto p-6 rounded-2xl ${isActive ? 'block' : 'hidden'}`}
-      style={{
-        backgroundColor: 'rgba(255, 255, 255, 0.2)',
-        backdropFilter: 'blur(8px)',
-        border: `2px solid ${message.color}`,
-        boxShadow: `0 4px 20px rgba(0, 0, 0, 0.15), 0 0 15px ${message.color}40`,
-        opacity: 0
-      }}
+      className={`absolute inset-0 flex items-center justify-center p-6 ${isActive ? '' : 'invisible'}`}
+      style={{ opacity: 0 }} // Start invisible for GSAP to animate
     >
-      <p 
-        className="text-white text-center font-dancing-script text-2xl md:text-3xl"
-        style={{ textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)' }}
+      <div 
+        className="bg-black bg-opacity-40 backdrop-blur-sm p-6 md:p-8 rounded-xl"
+        style={{
+          border: `2px solid ${message.color}`,
+          boxShadow: `0 0 15px ${message.color}, inset 0 0 10px rgba(255, 255, 255, 0.2)`,
+        }}
       >
-        {message.text}
-      </p>
+        <p 
+          className="font-dancing-script text-white text-xl md:text-2xl lg:text-3xl text-center"
+          style={{ textShadow: `0 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px ${message.color}` }}
+        >
+          {message.text}
+        </p>
+      </div>
     </div>
   );
 }

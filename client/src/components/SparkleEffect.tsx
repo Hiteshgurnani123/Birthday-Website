@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from 'react';
 
 interface SparkleProps {
   colors?: string[];
@@ -6,98 +6,61 @@ interface SparkleProps {
 }
 
 export function SparkleEffect({ 
-  colors = ['#ffffff', '#ffde59', '#ff9ed8', '#8a5cf5'],
-  density = 40
+  colors = ['#ffffff', '#ffde59', '#ff9ed8'], 
+  density = 25 
 }: SparkleProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [sparkles, setSparkles] = useState<{ id: number; top: string; left: string; size: number; color: string; delay: number }[]>([]);
   
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const sparkles: HTMLDivElement[] = [];
+    // Create initial sparkles
+    const initialSparkles = Array.from({ length: density }, (_, i) => createSparkle(i, colors));
+    setSparkles(initialSparkles);
     
-    const createSparkle = () => {
-      // Create sparkle element
-      const sparkle = document.createElement('div');
-      sparkle.className = 'sparkle';
-      
-      // Random position
-      const x = Math.random() * window.innerWidth;
-      const y = Math.random() * window.innerHeight;
-      sparkle.style.left = `${x}px`;
-      sparkle.style.top = `${y}px`;
-      
-      // Random size
-      const size = Math.random() * 10 + 5;
-      sparkle.style.width = `${size}px`;
-      sparkle.style.height = `${size}px`;
-      
-      // Random animation delay and duration
-      const animDuration = Math.random() * 3 + 2;
-      const animDelay = Math.random() * 5;
-      sparkle.style.animation = `sparkle ${animDuration}s linear ${animDelay}s infinite`;
-      
-      // Random color from palette
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      sparkle.style.backgroundImage = `radial-gradient(circle, ${randomColor} 0%, rgba(255, 255, 255, 0) 70%)`;
-      
-      container.appendChild(sparkle);
-      sparkles.push(sparkle);
-      
-      // Remove and recreate sparkle after animation cycle
-      setTimeout(() => {
-        if (container.contains(sparkle)) {
-          container.removeChild(sparkle);
-          const index = sparkles.indexOf(sparkle);
-          if (index > -1) {
-            sparkles.splice(index, 1);
-          }
-          createSparkle();
-        }
-      }, (animDuration + animDelay) * 1000 + 1000);
-    };
-    
-    // Initial creation of sparkles
-    const numberOfSparkles = Math.floor(window.innerWidth / density);
-    for (let i = 0; i < numberOfSparkles; i++) {
-      createSparkle();
-    }
-    
-    // Handle window resize
-    const handleResize = () => {
-      // Remove all existing sparkles
-      sparkles.forEach(sparkle => {
-        if (container.contains(sparkle)) {
-          container.removeChild(sparkle);
-        }
+    // Set up periodic sparkle regeneration
+    const interval = setInterval(() => {
+      setSparkles(prevSparkles => {
+        // Replace a random sparkle with a new one
+        const index = Math.floor(Math.random() * prevSparkles.length);
+        const newSparkles = [...prevSparkles];
+        newSparkles[index] = createSparkle(prevSparkles[index].id, colors);
+        return newSparkles;
       });
-      sparkles.length = 0;
-      
-      // Create new sparkles appropriate for the new window size
-      const newNumberOfSparkles = Math.floor(window.innerWidth / density);
-      for (let i = 0; i < newNumberOfSparkles; i++) {
-        createSparkle();
-      }
-    };
+    }, 1000);
     
-    window.addEventListener('resize', handleResize);
-    
-    // Cleanup
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      sparkles.forEach(sparkle => {
-        if (container.contains(sparkle)) {
-          container.removeChild(sparkle);
-        }
-      });
+    return () => clearInterval(interval);
+  }, [density, colors]);
+  
+  // Function to create a new sparkle
+  const createSparkle = (id: number, colorOptions: string[]) => {
+    return {
+      id,
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      size: Math.random() * 10 + 4, // Size between 4px and 14px
+      color: colorOptions[Math.floor(Math.random() * colorOptions.length)],
+      delay: Math.random() * 4 // Random animation delay for variety
     };
-  }, [colors, density]);
+  };
   
   return (
-    <div 
-      ref={containerRef} 
-      className="fixed inset-0 z-10 pointer-events-none"
-    />
+    <div className="fixed inset-0 pointer-events-none z-10">
+      {sparkles.map(sparkle => (
+        <div
+          key={sparkle.id}
+          className="absolute animate-sparkle rounded-full"
+          style={{
+            top: sparkle.top,
+            left: sparkle.left,
+            width: `${sparkle.size}px`,
+            height: `${sparkle.size}px`,
+            backgroundColor: sparkle.color,
+            boxShadow: `0 0 ${sparkle.size * 2}px ${sparkle.color}`,
+            opacity: 0,
+            transform: 'scale(0)',
+            animation: `sparkle 4s ease-in-out infinite ${sparkle.delay}s`
+          }}
+        />
+      ))}
+    </div>
   );
 }
