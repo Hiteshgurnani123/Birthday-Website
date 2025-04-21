@@ -105,7 +105,9 @@ export function BirthdayPage() {
       <ScrollIndicator />
       
       {/* Next page button */}
-      <NextPageButton to="/messages" />
+      <div className="fixed bottom-12 left-1/2 transform -translate-x-1/2 z-30">
+        <NextPageButton to="/messages" />
+      </div>
     </div>
   );
 }
