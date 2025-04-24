@@ -1,8 +1,8 @@
 
+
 import { useState, useEffect } from 'react';
 import { SparkleEffect } from '@/components/SparkleEffect';
 import { MusicPlayer } from '@/components/MusicPlayer';
-import { NextPageButton } from '@/components/NextPageButton';
 import { gsap } from 'gsap';
 
 interface HiddenItem {
@@ -33,7 +33,6 @@ export function HuntPage() {
     setItems(prevItems => 
       prevItems.map(item => {
         if (item.id === itemId && !item.found) {
-          // Animate the found item
           const element = document.getElementById(itemId);
           if (element) {
             gsap.to(element, {
@@ -54,10 +53,9 @@ export function HuntPage() {
   useEffect(() => {
     const newFoundCount = items.filter(item => item.found).length;
     setFoundCount(newFoundCount);
-    
+
     if (newFoundCount === items.length && !gameComplete) {
       setGameComplete(true);
-      // Animate the success message
       gsap.fromTo('.success-message',
         { opacity: 0, y: -50 },
         { opacity: 1, y: 0, duration: 1, ease: 'back.out(1.7)' }
@@ -78,7 +76,7 @@ export function HuntPage() {
 
       {/* Music player */}
       <MusicPlayer audioSrc="/assets/music.mp3" />
-      
+
       {/* Sparkle effect */}
       <SparkleEffect colors={['#ffffff', '#ffde59', '#ff9ed8', '#8a5cf5']} />
 
@@ -112,7 +110,7 @@ export function HuntPage() {
           </button>
         ))}
 
-        {/* Success message */}
+        {/* Success message + Redirect Button */}
         {gameComplete && (
           <div className="success-message text-center bg-white bg-opacity-20 backdrop-blur-lg p-8 rounded-xl border-2 border-[#ffde59] shadow-xl">
             <h2 className="font-dancing-script text-white text-4xl mb-4">
@@ -121,9 +119,12 @@ export function HuntPage() {
             <p className="font-quicksand text-white text-xl mb-6">
               Ready for your next magical adventure?
             </p>
-            <NextPageButton to="/final" animate>
+            <a 
+              href="https://birthday-website-3-1.onrender.com"
+              className="inline-block bg-yellow-400 text-white font-bold px-6 py-3 rounded-full shadow-lg hover:bg-yellow-500 transition duration-300"
+            >
               Continue to Your Final Surprise ✨
-            </NextPageButton>
+            </a>
           </div>
         )}
       </main>
